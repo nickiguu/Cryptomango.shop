@@ -3,65 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Site fora do ar</title>
+  <title>Estamos fora do ar</title>
 
-  <!-- FAVICON -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
   <style>
-    /* Zera margens e garante fullscreen */
-    html, body {
-      height: 100%;
+    /* Reset básico */
+    * {
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      background-color: #000; /* cor de fundo caso a imagem não carregue */
+      box-sizing: border-box;
     }
 
-    /* Imagem em tela cheia */
+    html, body {
+      height: 100%;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    /* Fundo com imagem */
     .background {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background-image: url("imagemf.png"); /* <<< coloque aqui o caminho da sua imagem */
+      background-image: url("imagemf.png"); /* Coloque sua imagem aqui */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       z-index: 1;
+      filter: brightness(0.7); /* escurece levemente para destacar o texto */
     }
 
-    /* Mensagem opcional */
+    /* Overlay de mensagem */
     .overlay {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* escurece um pouco a imagem (opcional) */
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      font-family: "Segoe UI", sans-serif;
       text-align: center;
+      color: #fff;
       z-index: 2;
+      padding: 20px;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+    .overlay h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
     }
 
-    p {
-      font-size: 1.2rem;
-      opacity: 0.85;
+    .overlay p {
+      font-size: 1.5rem;
+      opacity: 0.9;
+    }
+
+    /* Animação suave de pulso */
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.85; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .overlay h1 {
+        font-size: 2.2rem;
+      }
+      .overlay p {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .overlay h1 {
+        font-size: 1.8rem;
+      }
+      .overlay p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="background"></div>
 
-  <!-- Mensagem opcional -->
   <div class="overlay">
     <div>
       <h1>Estamos fora do ar</h1>
